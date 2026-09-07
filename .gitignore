@@ -1,0 +1,29 @@
+# deps / build
+node_modules/
+.pnpm-store/
+dist/
+.next/
+out/
+.turbo/
+*.tsbuildinfo
+
+# foundry
+contracts/*/out/
+contracts/*/cache/
+contracts/*/broadcast/**/dry-run/
+
+# env & secrets — NEVER commit
+.env
+.env.*
+!.env.example
+!.env.local.example
+services/cre/.env
+services/cre/**/secrets.local.*
+
+# adapter runtime state
+services/adapter/state/
+
+# os / editor
+.DS_Store
+*.log
+!docs/evidence/*.log

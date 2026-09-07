@@ -1,0 +1,12 @@
+{
+  "_comment": "Written by scripts/setup-hedera.ts and forge script Deploy.s.sol.",
+  "adapterAccountId": "",
+  "adapterEvmAddress": "",
+  "escrowAccountId": "",
+  "hcsRegistryTopicId": "",
+  "usdcTokenId": "0.0.429274",
+  "usdcEvmAddress": "",
+  "atsFactory": "0.0.9213391",
+  "atsResolver": "0.0.9212226",
+  "invoicePrimaryMarket": {}
+}

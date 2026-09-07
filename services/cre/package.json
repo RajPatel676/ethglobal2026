@@ -1,0 +1,20 @@
+{
+  "name": "receivable-cre",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chainlink CRE project — confidential invoice verification. Managed by the `cre` CLI + Bun (not pnpm).",
+  "scripts": {
+    "simulate": "bash verify-invoice/scripts/simulate.sh",
+    "typecheck": "bunx tsc --noEmit"
+  },
+  "dependencies": {
+    "@chainlink/cre-sdk": "^1.18.0",
+    "viem": "^2.21.19",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.10",
+    "typescript": "^5.6.3"
+  }
+}

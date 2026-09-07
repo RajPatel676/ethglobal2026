@@ -1,0 +1,20 @@
+{
+  "_comment": "Fill `ens` from https://docs.ens.domains/learn/deployments → Sepolia ENSv2 beta. `receivable` is written by the forge scripts.",
+  "ens": {
+    "rootRegistry": "",
+    "ethRegistry": "",
+    "ethRegistrar": "",
+    "verifiableFactory": "",
+    "permissionedResolverImpl": "",
+    "userRegistryImpl": "",
+    "universalResolver": "",
+    "mockUsdc": ""
+  },
+  "receivable": {
+    "rootName": "receivable.eth",
+    "forwarder": "0x15fC6ae953E024d975e77382eEeC56A9101f9F88",
+    "rootSubregistry": "",
+    "resolver": "",
+    "verificationConsumer": ""
+  }
+}

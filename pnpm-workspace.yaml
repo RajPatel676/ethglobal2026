@@ -1,0 +1,6 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "services/adapter"
+  - "services/mock-accounting"
+# services/cre is intentionally excluded: it is a Bun project managed by the Chainlink `cre` CLI.

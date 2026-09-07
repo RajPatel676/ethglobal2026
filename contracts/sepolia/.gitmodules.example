@@ -1,0 +1,2 @@
+# run from contracts/sepolia:
+#   forge install foundry-rs/forge-std OpenZeppelin/openzeppelin-contracts --no-commit

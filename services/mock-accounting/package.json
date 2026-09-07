@@ -1,0 +1,25 @@
+{
+  "name": "mock-accounting",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Xero-shaped accounting API stand-in. The CRE workflow only changes `accountingApiUrl` to point at real Xero/QuickBooks.",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.1",
+    "@receivable/shared": "workspace:*",
+    "hono": "^4.6.3"
+  },
+  "devDependencies": {
+    "@receivable/config": "workspace:*",
+    "@types/node": "^22.7.5",
+    "eslint": "^9.12.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}

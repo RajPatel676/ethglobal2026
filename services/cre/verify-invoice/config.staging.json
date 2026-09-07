@@ -1,0 +1,12 @@
+{
+  "accountingApiUrl": "http://localhost:4100/invoices",
+  "secretId": "ACCOUNTING_TOKEN",
+  "authorizedEVMAddress": "0x0000000000000000000000000000000000000000",
+  "evms": [
+    {
+      "chainSelectorName": "ethereum-testnet-sepolia",
+      "consumerAddress": "0x0000000000000000000000000000000000000000",
+      "gasLimit": "900000"
+    }
+  ]
+}

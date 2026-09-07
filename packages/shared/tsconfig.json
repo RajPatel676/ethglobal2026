@@ -1,0 +1,1 @@
+{ "extends": "@receivable/config/tsconfig/node", "compilerOptions": { "noEmit": true, "types": [] }, "include": ["src"] }
