@@ -7,10 +7,14 @@
     "debtorName": "Globex Corporation",
     "amountCents": 1250000,
     "currency": "USD",
-    "issuedDate": 1757203200,
-    "dueDate": 1762387200,
+    "issuedDate": 1788739200,
+    "dueDate": 1793923200,
     "status": "AUTHORISED",
-    "debtor": { "onTimeRatio": 0.92, "avgDaysLate": 3, "invoicesPaid": 27 }
+    "debtor": {
+      "onTimeRatio": 0.92,
+      "avgDaysLate": 3,
+      "invoicesPaid": 27
+    }
   },
   {
     "id": "1043",
@@ -20,10 +24,14 @@
     "debtorName": "Initech LLC",
     "amountCents": 480000,
     "currency": "USD",
-    "issuedDate": 1754524800,
-    "dueDate": 1757116800,
+    "issuedDate": 1786060800,
+    "dueDate": 1788652800,
     "status": "PAID",
-    "debtor": { "onTimeRatio": 0.65, "avgDaysLate": 14, "invoicesPaid": 9 }
+    "debtor": {
+      "onTimeRatio": 0.65,
+      "avgDaysLate": 14,
+      "invoicesPaid": 9
+    }
   },
   {
     "id": "1044",
@@ -33,10 +41,14 @@
     "debtorName": "Umbrella Holdings",
     "amountCents": 3200000,
     "currency": "USD",
-    "issuedDate": 1751846400,
-    "dueDate": 1754438400,
+    "issuedDate": 1783382400,
+    "dueDate": 1785974400,
     "status": "AUTHORISED",
-    "debtor": { "onTimeRatio": 0.4, "avgDaysLate": 31, "invoicesPaid": 4 }
+    "debtor": {
+      "onTimeRatio": 0.4,
+      "avgDaysLate": 31,
+      "invoicesPaid": 4
+    }
   },
   {
     "id": "2001",
@@ -46,9 +58,13 @@
     "debtorName": "Contoso Ltd",
     "amountCents": 890000,
     "currency": "USD",
-    "issuedDate": 1757289600,
-    "dueDate": 1760745600,
+    "issuedDate": 1788825600,
+    "dueDate": 1792281600,
     "status": "AUTHORISED",
-    "debtor": { "onTimeRatio": 0.98, "avgDaysLate": 1, "invoicesPaid": 52 }
+    "debtor": {
+      "onTimeRatio": 0.98,
+      "avgDaysLate": 1,
+      "invoicesPaid": 52
+    }
   }
 ]

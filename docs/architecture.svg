@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1060" viewBox="0 0 1720 1060" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#5a6478"/>
+    </marker>
+    <marker id="arwAccent" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2f6bff"/>
+    </marker>
+    <marker id="arwGreen" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#12855a"/>
+    </marker>
+    <style>
+      .lane      { fill:#f4f6fa; stroke:#d7dded; stroke-width:1.5; rx:14 }
+      .laneTitle { font-size:15px; font-weight:700; fill:#4a5570; letter-spacing:.08em }
+      .box       { fill:#ffffff; stroke:#c9d2e4; stroke-width:1.5; rx:10 }
+      .boxA      { fill:#ffffff; stroke:#2f6bff; stroke-width:2; rx:10 }
+      .h         { font-size:16px; font-weight:650; fill:#141a26 }
+      .p         { font-size:13.5px; fill:#5a6478 }
+      .code      { font-size:12.5px; fill:#42506b; font-family:ui-monospace,Menlo,monospace }
+      .step      { font-size:12px; font-weight:700; fill:#ffffff }
+      .edgeA     { font-size:12.5px; fill:#2f6bff; font-weight:600 }
+      .edgeG     { font-size:12.5px; fill:#12855a; font-weight:600 }
+    </style>
+  </defs>
+
+  <rect width="1720" height="1060" fill="#ffffff"/>
+
+  <text x="48" y="52" font-size="26" font-weight="750" fill="#0c111c">receivable.eth</text>
+  <text x="48" y="78" font-size="15" fill="#5a6478">Verified, tokenized invoice financing — an invoice is priced inside a TEE, named on ENS, registered against double financing, and sold below par.</text>
+
+  <!-- ══════════ LANE 1 ══════════ -->
+  <rect class="lane" x="40" y="108" width="1640" height="396"/>
+  <text class="laneTitle" x="62" y="136">VERIFICATION — WHAT MAKES A LISTING TRUSTWORTHY</text>
+
+  <rect class="box" x="62" y="156" width="240" height="130"/>
+  <circle cx="84" cy="180" r="11" fill="#2f6bff"/><text class="step" x="80" y="184">1</text>
+  <text class="h" x="104" y="185">Small business</text>
+  <text class="p" x="80" y="212">Clicks “Finance” on an</text>
+  <text class="p" x="80" y="231">unpaid invoice.</text>
+  <text class="code" x="80" y="256">apps/web /dashboard</text>
+  <text class="code" x="80" y="274">POST /api/finance</text>
+
+  <path d="M302 221 L372 221" stroke="#2f6bff" stroke-width="2" marker-end="url(#arwAccent)"/>
+  <text class="edgeA" x="306" y="212">signed</text>
+
+  <rect x="378" y="156" width="470" height="326" rx="14" fill="#eef3ff" stroke="#2f6bff" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="400" y="182" font-size="14" font-weight="750" fill="#2f6bff">AWS NITRO ENCLAVE · us-west-2</text>
+  <text class="p" x="400" y="202">Chainlink CRE confidential workflow</text>
+
+  <rect class="boxA" x="400" y="214" width="426" height="86"/>
+  <circle cx="422" cy="238" r="11" fill="#2f6bff"/><text class="step" x="418" y="242">2</text>
+  <text class="h" x="442" y="243">Secret + confidential fetch</text>
+  <text class="p" x="418" y="268">OAuth token decrypted in-enclave. Invoice and</text>
+  <text class="p" x="418" y="288">debtor payment history never leave this box.</text>
+
+  <rect class="boxA" x="400" y="312" width="426" height="78"/>
+  <circle cx="422" cy="336" r="11" fill="#2f6bff"/><text class="step" x="418" y="340">3</text>
+  <text class="h" x="442" y="341">Risk scoring</text>
+  <text class="p" x="418" y="366">Integer-only, deterministic across DON nodes.</text>
+  <text class="code" x="418" y="384">riskScore → discountBps</text>
+
+  <line x1="400" y1="406" x2="826" y2="406" stroke="#e0555f" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="400" y="426" font-size="13" font-weight="700" fill="#c0343e">Only 7 fields cross this line</text>
+  <text class="code" x="400" y="446">businessLabel · invoiceLabel · invoiceHash</text>
+  <text class="code" x="400" y="464">faceValueCents · dueDate · riskScore · discountBps</text>
+
+  <rect class="box" x="878" y="214" width="180" height="112"/>
+  <circle cx="900" cy="238" r="11" fill="#2f6bff"/><text class="step" x="896" y="242">4</text>
+  <text class="h" x="920" y="243">DON signs</text>
+  <text class="p" x="896" y="270">Consensus over the</text>
+  <text class="p" x="896" y="288">report, then an</text>
+  <text class="p" x="896" y="306">on-chain write.</text>
+  <path d="M848 270 L872 270" stroke="#5a6478" stroke-width="2" marker-end="url(#arw)"/>
+
+  <rect x="1090" y="156" width="568" height="326" rx="14" fill="#f7f9fd" stroke="#c9d2e4" stroke-width="2"/>
+  <text x="1112" y="182" font-size="14" font-weight="750" fill="#42506b">ETHEREUM SEPOLIA</text>
+
+  <rect class="box" x="1112" y="198" width="250" height="100"/>
+  <circle cx="1134" cy="222" r="11" fill="#2f6bff"/><text class="step" x="1130" y="226">5</text>
+  <text class="h" x="1154" y="227">VerificationConsumer</text>
+  <text class="p" x="1130" y="252">Rejects any caller but the</text>
+  <text class="p" x="1130" y="270">forwarder, and any repeat</text>
+  <text class="p" x="1130" y="288">of an invoiceHash.</text>
+  <path d="M1058 270 L1106 270" stroke="#5a6478" stroke-width="2" marker-end="url(#arw)"/>
+
+  <rect class="box" x="1388" y="198" width="248" height="100"/>
+  <text class="h" x="1408" y="227">ENSv2 registry</text>
+  <text class="p" x="1408" y="252">Mints the name inside the</text>
+  <text class="p" x="1408" y="270">business’s own UserRegistry.</text>
+  <text class="p" x="1408" y="288">Non-transferable.</text>
+  <path d="M1362 248 L1382 248" stroke="#5a6478" stroke-width="2" marker-end="url(#arw)"/>
+
+  <rect class="box" x="1112" y="316" width="524" height="146"/>
+  <text class="h" x="1132" y="344">inv-1042.acme.receivable.eth</text>
+  <text class="p" x="1132" y="366">Permissioned resolver — who may write each record is enforced on-chain:</text>
+  <text class="code" x="1132" y="392">consumer  →  invoice-hash · face-value-cents · due-date</text>
+  <text class="code" x="1132" y="412">              risk-score · discount-bps · status=verified</text>
+  <text class="code" x="1132" y="432">adapter   →  ats-token · hcs-seq · status   (exactly 3 keys)</text>
+  <text class="code" x="1132" y="452">business  →  description · url   (nothing else)</text>
+
+  <!-- ══════════ LANE 2 ══════════ -->
+  <rect class="lane" x="40" y="544" width="1640" height="404"/>
+  <text class="laneTitle" x="62" y="572">FINANCING — TURNING A VERIFIED INVOICE INTO CASH TODAY</text>
+
+  <rect class="box" x="62" y="592" width="286" height="238"/>
+  <circle cx="84" cy="616" r="11" fill="#12855a"/><text class="step" x="80" y="620">6</text>
+  <text class="h" x="104" y="621">Adapter</text>
+  <text class="p" x="80" y="646">Watches Sepolia logs, then runs</text>
+  <text class="p" x="80" y="664">six stages — each persisted before</text>
+  <text class="p" x="80" y="682">the next, so a crash resumes</text>
+  <text class="p" x="80" y="700">instead of re-minting.</text>
+  <text class="code" x="80" y="728">01 registry-check</text>
+  <text class="code" x="80" y="746">02 create-bond</text>
+  <text class="code" x="80" y="764">03 issue-units</text>
+  <text class="code" x="80" y="782">04 deploy-market</text>
+  <text class="code" x="80" y="800">05 hcs-record</text>
+  <text class="code" x="80" y="818">06 ens-writeback</text>
+
+  <path d="M348 684 L412 684" stroke="#5a6478" stroke-width="2" marker-end="url(#arw)"/>
+
+  <rect x="418" y="592" width="800" height="330" rx="14" fill="#f4fbf8" stroke="#12855a" stroke-width="2"/>
+  <text x="440" y="618" font-size="14" font-weight="750" fill="#0f6f4b">HEDERA TESTNET · CHAIN 296</text>
+
+  <rect class="box" x="440" y="634" width="360" height="110"/>
+  <circle cx="462" cy="658" r="11" fill="#12855a"/><text class="step" x="458" y="662">7</text>
+  <text class="h" x="482" y="663">HCS registry topic</text>
+  <text class="p" x="458" y="688">A public, append-only record of the</text>
+  <text class="p" x="458" y="706">canonical fingerprint. Any lender computing</text>
+  <text class="p" x="458" y="724">the same hash sees the invoice is taken.</text>
+
+  <rect class="box" x="822" y="634" width="374" height="110"/>
+  <circle cx="844" cy="658" r="11" fill="#12855a"/><text class="step" x="840" y="662">8</text>
+  <text class="h" x="864" y="663">ATS bond · ERC-1410</text>
+  <text class="p" x="840" y="688">One unit per whole dollar of face value,</text>
+  <text class="p" x="840" y="706">issued on the default partition. A security</text>
+  <text class="p" x="840" y="724">token, not a plain ERC-20.</text>
+
+  <rect class="box" x="440" y="762" width="756" height="140"/>
+  <circle cx="462" cy="786" r="11" fill="#12855a"/><text class="step" x="458" y="790">9</text>
+  <text class="h" x="482" y="791">InvoicePrimaryMarket — one per invoice</text>
+  <text class="p" x="458" y="818">Investors buy below par; the business is paid in the same transaction. This contract never</text>
+  <text class="p" x="458" y="836">custodies primary-sale cash — same-day liquidity is the product.</text>
+  <text class="code" x="458" y="864">unitPriceMicro = 1e6 × (10 000 − discountBps) ÷ 10 000</text>
+  <text class="code" x="458" y="884">at 3.2% on $12,500  →  pay $0.968 per unit, redeem at $1.00</text>
+
+  <rect class="box" x="1256" y="634" width="402" height="110"/>
+  <text class="h" x="1276" y="663">Investor</text>
+  <text class="p" x="1276" y="688">Buys units with HTS USDC. Redeems at par</text>
+  <text class="p" x="1276" y="706">once the debtor settles — the discount is</text>
+  <text class="p" x="1276" y="724">the return.</text>
+  <path d="M1252 688 L1226 688" stroke="#12855a" stroke-width="2" marker-end="url(#arwGreen)"/>
+  <text class="edgeG" x="1228" y="678" text-anchor="end">USDC</text>
+
+  <rect class="box" x="1256" y="762" width="402" height="140"/>
+  <text class="h" x="1276" y="791">Small business — paid today</text>
+  <text class="p" x="1276" y="816">Receives investor cash the moment a</text>
+  <text class="p" x="1276" y="834">purchase settles, not at maturity.</text>
+  <text class="p" x="1276" y="862">On a $12,500 invoice due in 60 days:</text>
+  <text class="code" x="1276" y="886">$12,100 now  ·  $400 total fee</text>
+  <path d="M1226 826 L1250 826" stroke="#12855a" stroke-width="2" marker-end="url(#arwGreen)"/>
+
+  <!-- writeback: adapter stage 06 -> ENS records, routed through the gap between lanes -->
+  <path d="M1218 626 L1237 626 L1237 524 L1500 524 L1500 468" fill="none" stroke="#12855a" stroke-width="2"
+        stroke-dasharray="6 4" marker-end="url(#arwGreen)"/>
+  <text class="edgeG" x="1213" y="520" text-anchor="end">10 · adapter writes ats-token, hcs-seq and status=financed back to ENS</text>
+
+  <text class="p" x="48" y="990" font-size="13">The invoice itself is never published — only a keccak fingerprint of it. Nobody, including the business, can mint an invoice name without a DON-signed report.</text>
+  <text class="code" x="48" y="1016" font-size="12">contracts/sepolia · services/cre · services/adapter · contracts/hedera · apps/web</text>
+</svg>

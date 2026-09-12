@@ -1,14 +1,14 @@
 {
-  "_comment": "Fill `ens` from https://docs.ens.domains/learn/deployments → Sepolia ENSv2 beta. `receivable` is written by the forge scripts.",
+  "_comment": "ENSv2 Sepolia beta, verified live on-chain 2026-09-12 (docs.ens.domains/learn/deployments). The beta is rolling - re-run `pnpm ens:check` if anything starts reverting. `receivable` block is written by the forge scripts in contracts/sepolia/script.",
   "ens": {
-    "rootRegistry": "",
-    "ethRegistry": "",
-    "ethRegistrar": "",
-    "verifiableFactory": "",
-    "permissionedResolverImpl": "",
-    "userRegistryImpl": "",
-    "universalResolver": "",
-    "mockUsdc": ""
+    "rootRegistry": "0x8115186E8f2E0B0281e86ab91f0f48Ba90364354",
+    "ethRegistry": "0xBDC85dD5b15D7ecb354cd7cb6f2c50b4f2c4F0E2",
+    "ethRegistrar": "0xa88553F454b77203B0D036A05c894d555EAAa2Cc",
+    "verifiableFactory": "0x10dC6333CDFe1FCEf624c6e0a8221b91804Cd7ef",
+    "permissionedResolverImpl": "0x9EAe5C2730a7dD16BDD1DeE6421a1B91e3B0365e",
+    "userRegistryImpl": "0x624a25d67B59D587752EbEc8DdeD8827dAe52050",
+    "universalResolver": "0x4A1817d13E9cF196f471725176355C1234b63C70",
+    "mockUsdc": "0x768F42455A2D082E23ceeF7d51e5787C82d67a39"
   },
   "receivable": {
     "rootName": "receivable.eth",

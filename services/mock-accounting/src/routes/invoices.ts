@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import { MockInvoiceSchema, type MockInvoice } from '@receivable/shared/schemas'
 import raw from '../data/invoices.json' with { type: 'json' }
 
-const invoices: MockInvoice[] = raw.map((r) => MockInvoiceSchema.parse(r))
+export const invoices: MockInvoice[] = raw.map((r) => MockInvoiceSchema.parse(r))
 
 export const invoicesRoute = new Hono()
 
