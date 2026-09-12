@@ -1,0 +1,12 @@
+[submodule "contracts/sepolia/lib/forge-std"]
+	path = contracts/sepolia/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "contracts/sepolia/lib/openzeppelin-contracts"]
+	path = contracts/sepolia/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "contracts/hedera/lib/forge-std"]
+	path = contracts/hedera/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "contracts/hedera/lib/openzeppelin-contracts"]
+	path = contracts/hedera/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
