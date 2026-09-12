@@ -32,15 +32,31 @@ export const RECEIVABLE_SEPOLIA = {
 
 export const isUnset = (a: string) => a === ZERO || a === ''
 
-/** Registry role bitmap (ensdomains/namechain EnhancedAccessControl). Admin variant = role << 128. */
+/**
+ * Registry role bitmap (ensdomains/namechain `RegistryRolesLib`). Admin variant = role << 128.
+ * EAC packs one role per NYBBLE (4 bits): role N is at bit 4*N. Mirror of ENSRoles.sol.
+ */
 export const ENS_REGISTRY_ROLES = {
-  ROLE_REGISTRAR: 1n << 0n,
-  ROLE_RENEW: 1n << 4n,
-  ROLE_SET_SUBREGISTRY: 1n << 20n,
-  ROLE_SET_RESOLVER: 1n << 24n,
+  ROLE_REGISTRAR: 1n << 0n, // nybble 0
+  ROLE_REGISTER_RESERVED: 1n << 4n, // nybble 1
+  ROLE_SET_PARENT: 1n << 8n, // nybble 2
+  ROLE_UNREGISTER: 1n << 12n, // nybble 3
+  ROLE_RENEW: 1n << 16n, // nybble 4
+  ROLE_SET_SUBREGISTRY: 1n << 20n, // nybble 5
+  ROLE_SET_RESOLVER: 1n << 24n, // nybble 6
   ROLE_CAN_TRANSFER_ADMIN: (1n << 28n) << 128n,
   ADMIN_SHIFT: 128n,
 } as const
+
+/**
+ * `EACBaseRolesLib.ALL_ROLES` — bit 0 of every nybble. Any bit outside this mask makes
+ * EnhancedAccessControl revert `EACInvalidRoleBitmap`, so this is NOT 2^256-1.
+ */
+export const EAC_ALL_ROLES =
+  0x1111111111111111111111111111111111111111111111111111111111111111n
+
+/** True if `bitmap` is a legal EAC role bitmap (no bits outside ALL_ROLES). */
+export const isValidRoleBitmap = (bitmap: bigint) => (bitmap & ~EAC_ALL_ROLES) === 0n
 
 /** Permissioned resolver role bitmap. */
 export const ENS_RESOLVER_ROLES = {

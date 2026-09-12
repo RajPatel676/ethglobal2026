@@ -1,4 +1,4 @@
-import { namehash as viemNamehash, labelhash as viemLabelhash, toHex } from 'viem'
+import { namehash as viemNamehash, labelhash as viemLabelhash, stringToBytes, toHex } from 'viem'
 import { normalize } from 'viem/ens'
 
 export const namehash = (name: string) => viemNamehash(normalize(name))
@@ -9,7 +9,7 @@ export function dnsEncode(name: string): `0x${string}` {
   const parts = normalize(name).split('.')
   const bytes: number[] = []
   for (const p of parts) {
-    const b = new TextEncoder().encode(p)
+    const b = stringToBytes(p)
     if (b.length > 255) throw new Error(`label too long: ${p}`)
     bytes.push(b.length, ...b)
   }

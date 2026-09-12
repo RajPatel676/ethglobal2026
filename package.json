@@ -16,6 +16,7 @@
     "test": "turbo test",
     "forge:test": "forge test --root contracts/sepolia && forge test --root contracts/hedera",
     "abis": "tsx scripts/export-abis.ts",
+    "ens:check": "tsx scripts/ens-check.ts",
     "hedera:setup": "tsx scripts/setup-hedera.ts",
     "demo:reset": "tsx scripts/demo-reset.ts",
     "cre:simulate": "bash services/cre/verify-invoice/scripts/simulate.sh",

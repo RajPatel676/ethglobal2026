@@ -1,4 +1,7 @@
-import { cre, EVMClient, getNetwork, HTTPCapability } from '@chainlink/cre-sdk'
+import {
+  cre, EVMClient, getNetwork, HTTPCapability,
+  type HTTPPayload, type TeeRuntime,
+} from '@chainlink/cre-sdk'
 import { z } from 'zod'
 import { verifyInvoice } from './handlers/verify-invoice'
 
@@ -18,8 +21,20 @@ export type Config = z.infer<typeof configSchema>
  * The official confidential templates are cron-driven; this is request-driven so an SMB action
  * kicks off exactly one verification.
  *
- * ⚠️ Day-1 check: if the simulator rejects http.trigger + handlerInTee, switch to a cron trigger
- * that polls `${accountingApiUrl}/pending` — every prize requirement is still satisfied.
+ * ✅ Verified against @chainlink/cre-sdk 1.20.1: `handlerInTee` is typed over a generic
+ * `Trigger<TRaw, TOut>`, so an HTTP trigger composes with it — no cron fallback needed.
+ *
+ * Why the regular HTTPClient and not ConfidentialHTTPClient inside the enclave:
+ *   • `ClientCapability.sendRequest` (http-actions) has an explicit
+ *     `NodeRuntime<unknown> | TeeRuntime<unknown>` overload — passing our TeeRuntime is what makes
+ *     the fetch execute *inside* the enclave ("in-enclave capability calls").
+ *   • `ConfidentialHTTPClient.sendRequest` accepts only `Runtime<unknown>`. Reaching it from here
+ *     would mean `rt.usingTheDons()` first, which by definition routes the call back OUT of the
+ *     TEE. That client is the answer for non-TEE workflows; inside a confidential handler it is
+ *     strictly weaker.
+ *   • Likewise `rt.getSecret()` on a TeeRuntime is decrypted in-enclave. The docs' warning about
+ *     getSecret + plaintext headers applies to ConfidentialHTTP called from a regular DON handler,
+ *     not to this path.
  */
 export function initWorkflow(config: Config) {
   const target = config.evms[0]!
@@ -38,7 +53,7 @@ export function initWorkflow(config: Config) {
       http.trigger({
         authorizedKeys: [{ type: 'KEY_TYPE_ECDSA_EVM', publicKey: config.authorizedEVMAddress }],
       }),
-      (rt, payload) => verifyInvoice(rt, payload, evm),
+      (rt: TeeRuntime<Config>, payload: HTTPPayload) => verifyInvoice(rt, payload, evm),
       [{ tee: 'nitro', regions: ['us-west-2'] }],
     ),
   ]
