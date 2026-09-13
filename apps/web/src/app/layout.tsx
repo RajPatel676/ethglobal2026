@@ -4,10 +4,25 @@ import { Nav } from '@/components/layout/nav'
 import { Providers } from '@/components/layout/providers'
 import './globals.css'
 
+/**
+ * Absolute base for og:image / twitter:image. Vercel injects VERCEL_URL for every deployment
+ * (preview included) and VERCEL_PROJECT_PRODUCTION_URL for the stable production domain, so the
+ * social card resolves correctly without hardcoding a host. NEXT_PUBLIC_SITE_URL overrides both
+ * once there is a custom domain.
+ */
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000')
+
 const DESCRIPTION =
   'Invoice financing where the invoice stays private. Priced inside a TEE, named on ENS, registered against double financing on Hedera.'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'receivable.eth — verified invoice financing',
   description: DESCRIPTION,
   applicationName: 'receivable.eth',

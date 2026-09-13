@@ -1,0 +1,15 @@
+# Foundry build output and vendored submodules — the web build never reads them,
+# and contracts/*/deployments/*.json (which it does read) is NOT excluded.
+contracts/*/lib
+contracts/*/out
+contracts/*/cache
+contracts/*/broadcast
+
+# The CRE workflow is a Bun project driven by the `cre` CLI, not part of the web build.
+services/cre
+
+# Local artifacts
+**/.turbo
+**/node_modules
+.env
+.env.local
