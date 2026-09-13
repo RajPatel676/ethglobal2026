@@ -8,14 +8,30 @@ valid demo link on day one.
 ## One-time setup
 
 1. Push the repo to GitHub and make it **public**.
-2. On vercel.com → **Add New… → Project** → import the repo.
-3. **Root Directory: leave it at the repository root.** Do not set it to `apps/web`.
-   `packages/shared` imports `contracts/sepolia/deployments/sepolia.json`, which sits
-   outside `apps/web`; pointing Vercel at `apps/web` breaks the build with
-   `Module not found: ../../../../contracts/sepolia/deployments/sepolia.json`.
-4. Framework preset, install command, build command and output directory are all read
-   from `vercel.json` at the root — leave the fields alone.
-5. Deploy. Cold build is roughly 60–90 seconds.
+2. On vercel.com -> **Add New... -> Project** -> import the repo.
+3. **Application Preset: Next.js.** If Vercel offers its "Services" preset (it detects
+   `services/mock-accounting` as a second deployable app), switch away from it. Do not
+   deploy the mock accounting service - it is a stub with a hardcoded token.
+4. **Root Directory: `apps/web`.**
+5. Open **Root Directory -> Advanced** (or Settings -> General after import) and tick
+   **"Include source files outside of the Root Directory in the Build Step."**
+   This is required, not optional. `packages/shared/src/constants/ens.ts` imports
+   `contracts/sepolia/deployments/sepolia.json`, four levels above `apps/web`. Without the
+   toggle the build fails with:
+   `Module not found: Can't resolve '../../../../contracts/sepolia/deployments/sepolia.json'`
+6. Leave Build and Output Settings on their defaults. Vercel detects the pnpm workspace and
+   installs from the repository root, then runs `next build` inside `apps/web`.
+7. Deploy. Cold build is roughly 90 seconds.
+
+There is deliberately **no `vercel.json`** in this repo. With Root Directory set to
+`apps/web`, Vercel reads `apps/web/vercel.json` and ignores a root-level one; and a root-level
+`vercel.json` declaring `"framework": "nextjs"` makes the build fail with
+`No Next.js version detected`, because `next` is a dependency of `apps/web`, not of the
+workspace root.
+
+`.vercelignore` stays at the repository root - it filters the upload, not the build - and
+correctly drops the Foundry submodules (~2100 files) while keeping
+`contracts/*/deployments/*.json`, which the build does read.
 
 ## Environment variables
 
