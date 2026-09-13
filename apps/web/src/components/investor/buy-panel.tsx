@@ -70,22 +70,22 @@ export function BuyPanel({
         inputMode="numeric"
         value={units}
         onChange={(e) => setUnits(e.target.value)}
-        className="mt-1 w-full rounded-lg border border-border bg-bg px-3 py-2 tabular-nums outline-none focus:border-accent"
+        className="tnum mt-1 w-full rounded-lg border border-border-strong bg-surface px-3 py-2 text-[15px] outline-none transition-colors focus:border-accent"
       />
       <div className="mt-1 text-xs text-muted">{unitsRemaining.toString()} available</div>
 
-      <dl className="mt-4 space-y-1.5 text-sm">
+      <dl className="mt-4 space-y-2 border-t border-border pt-3 text-sm">
         <div className="flex justify-between">
           <dt className="text-muted">You pay</dt>
-          <dd className="tabular-nums">{parsed ? formatMicro(cost) : '—'}</dd>
+          <dd className="tnum">{parsed ? formatMicro(cost) : '—'}</dd>
         </div>
         <div className="flex justify-between">
           <dt className="text-muted">Redeems at</dt>
-          <dd className="tabular-nums">{parsed ? formatMicro(par) : '—'}</dd>
+          <dd className="tnum">{parsed ? formatMicro(par) : '—'}</dd>
         </div>
         <div className="flex justify-between font-medium">
           <dt>Return</dt>
-          <dd className="tabular-nums text-good">{parsed ? formatMicro(par - cost) : '—'}</dd>
+          <dd className="tnum text-good">{parsed ? formatMicro(par - cost) : '—'}</dd>
         </div>
       </dl>
 
@@ -94,7 +94,7 @@ export function BuyPanel({
       ) : !onHedera ? (
         <button
           onClick={() => switchChain({ chainId: HEDERA_TESTNET.chainId })}
-          className="mt-4 w-full rounded-lg border border-border py-2 text-sm font-medium hover:bg-white/5"
+          className="mt-4 w-full rounded-lg bg-surface py-2 text-sm font-medium ring-1 ring-inset ring-border-strong transition-colors hover:bg-sand"
         >
           Switch to Hedera testnet
         </button>
@@ -102,7 +102,7 @@ export function BuyPanel({
         <div className="mt-4 space-y-2">
           <button
             disabled
-            className="w-full rounded-lg bg-accent py-2 text-sm font-medium text-white disabled:opacity-50"
+            className="w-full rounded-lg bg-accent py-2.5 text-sm font-medium text-white shadow-card transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
           >
             Buy {parsed?.toString() ?? '—'} units
           </button>

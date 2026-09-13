@@ -42,8 +42,8 @@ export default async function DashboardPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">{business}</h1>
-        <p className="text-sm text-muted">Invoices from your accounting system</p>
+        <h1 className="text-[1.75rem] font-semibold tracking-tight">{business}</h1>
+        <p className="mt-1 text-sm text-muted">Invoices from your accounting system</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
@@ -70,7 +70,7 @@ export default async function DashboardPage({
         <Card className="p-0">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted">
+              <tr className="border-b border-border bg-sand/60 text-left text-2xs font-medium uppercase tracking-wider text-faint">
                 <th className="px-5 py-3 font-medium">Invoice</th>
                 <th className="px-5 py-3 font-medium">Debtor</th>
                 <th className="px-5 py-3 text-right font-medium">Amount</th>
@@ -87,14 +87,14 @@ export default async function DashboardPage({
                 const risk = riskLabel(score)
                 const days = daysUntil(inv.dueDate)
                 return (
-                  <tr key={inv.id} className="border-b border-border/60 last:border-0">
+                  <tr key={inv.id} className="border-b border-border/70 transition-colors last:border-0 hover:bg-sand/40">
                     <td className="px-5 py-3">
-                      <Link href={`/invoices/${inv.id}`} className="font-medium hover:text-accent">
+                      <Link href={`/invoices/${inv.id}`} className="font-medium transition-colors hover:text-accent">
                         {inv.number}
                       </Link>
                     </td>
                     <td className="px-5 py-3 text-muted">{inv.debtorName}</td>
-                    <td className="px-5 py-3 text-right tabular-nums">{formatCents(inv.amountCents)}</td>
+                    <td className="tnum px-5 py-3 text-right font-medium">{formatCents(inv.amountCents)}</td>
                     <td className="px-5 py-3 text-muted">
                       {formatDate(inv.dueDate)}
                       <div className="text-xs">{days > 0 ? `in ${days}d` : `${-days}d ago`}</div>

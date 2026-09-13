@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { Logo } from '@/components/brand'
 import { cn, shortHash } from '@/lib/utils'
 
 const LINKS = [
@@ -19,39 +20,50 @@ export function Nav() {
   const wallet = connectors[0] // first EIP-6963 provider the browser announced
 
   return (
-    <header className="border-b border-border">
-      <nav className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-6 py-4">
-        <Link href="/" className="font-semibold tracking-tight">
-          receivable<span className="text-accent">.eth</span>
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur-sm">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center gap-8 px-6">
+        <Link
+          href="/"
+          aria-label="receivable.eth — home"
+          className="flex items-center rounded-md"
+        >
+          <Logo className="text-[15px]" />
         </Link>
-        <div className="flex gap-1">
-          {LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={cn(
-                'rounded-lg px-3 py-1.5 text-sm transition-colors',
-                pathname.startsWith(l.href) ? 'bg-white/5 text-fg' : 'text-muted hover:text-fg',
-              )}
-            >
-              {l.label}
-            </Link>
-          ))}
+
+        <div className="hidden items-center gap-1 sm:flex">
+          {LINKS.map((l) => {
+            const active = pathname.startsWith(l.href)
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={active ? 'page' : undefined}
+                className={cn(
+                  'rounded-lg px-3 py-1.5 text-sm transition-colors',
+                  active ? 'bg-sand font-medium text-fg' : 'text-muted hover:bg-sand/70 hover:text-fg',
+                )}
+              >
+                {l.label}
+              </Link>
+            )
+          })}
         </div>
+
         <div className="ml-auto">
           {isConnected && address ? (
             <button
               onClick={() => disconnect()}
-              className="rounded-lg border border-border px-3 py-1.5 font-mono text-xs text-muted hover:text-fg"
+              className="inline-flex items-center gap-2 rounded-lg bg-surface px-3 py-1.5 text-xs font-medium ring-1 ring-inset ring-border-strong transition-colors hover:bg-sand"
             >
-              {shortHash(address, 4)}
+              <span className="h-1.5 w-1.5 rounded-full bg-good" aria-hidden />
+              <span className="font-mono">{shortHash(address, 4)}</span>
             </button>
           ) : (
             <button
               onClick={() => wallet && connect({ connector: wallet })}
               disabled={!wallet || isPending}
               title={wallet ? undefined : 'No browser wallet detected'}
-              className="rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-white disabled:opacity-50"
+              className="rounded-lg bg-accent px-3.5 py-2 text-sm font-medium text-white shadow-card transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
             >
               {isPending ? 'Connecting…' : wallet ? 'Connect wallet' : 'No wallet found'}
             </button>

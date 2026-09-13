@@ -3,9 +3,27 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  @apply bg-bg text-fg antialiased;
+  @apply bg-bg text-fg;
+}
+
+/* Tabular figures wherever money appears, so columns stay aligned as values change. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* One visible focus treatment for the whole app. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  @apply rounded-md outline-none ring-2 ring-accent-ring ring-offset-2 ring-offset-bg;
 }

@@ -6,7 +6,6 @@ dist/
 out/
 .turbo/
 *.tsbuildinfo
-
 # foundry
 contracts/*/out/
 contracts/*/cache/

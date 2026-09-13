@@ -54,7 +54,7 @@ export function FinanceButton({
   }
 
   if (disabled) {
-    return <span className="text-xs text-muted">{disabledReason ?? 'Not financeable'}</span>
+    return <span className="text-xs text-faint">{disabledReason ?? 'Not financeable'}</span>
   }
 
   return (
@@ -62,7 +62,7 @@ export function FinanceButton({
       <button
         onClick={submit}
         disabled={busy}
-        className="rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-white disabled:opacity-50"
+        className="rounded-lg bg-accent px-3.5 py-2 text-sm font-medium text-white shadow-card transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
       >
         {busy ? 'Requesting…' : 'Finance'}
       </button>
